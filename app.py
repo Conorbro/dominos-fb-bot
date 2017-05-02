@@ -44,7 +44,7 @@ def webhook():
                     elif "the best?" in message_text:
                         send_message(sender_id, "Aisling's the best <3")
                     else:
-                        send_message(sender_id, "Hi there, the current Dominos Pizza Discount code is: SPRING77")
+                        send_message(sender_id, "Hi there, the current Dominos Pizza Discount code is: FIESTA77")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
