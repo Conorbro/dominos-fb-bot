@@ -5,8 +5,12 @@ import json
 import requests
 from flask import Flask, request
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='web/static',
+            template_folder='web/templates')
 
+LATEST_CODE = "ROI30OFF"
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -17,7 +21,7 @@ def verify():
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
 
-    return "Pizza is cool", 200
+    return app.send_static_file('web/static/index.html')
 
 
 @app.route('/', methods=['POST'])
@@ -46,7 +50,7 @@ def webhook():
                     elif "the best?" in message_text:
                         send_message(sender_id, "Aisling's the best <3")
                     else:
-			    send_message(sender_id, "Hi there, the current Dominos Pizza Discount code is: ROI30OFF, please consider donating some of the money you have saved to help the homeless - https://www.dubsimon.ie/Fundraise/Donate.aspx :)")
+			    send_message(sender_id, "Hi there, the current Dominos Pizza Discount code is: {LATEST_CODE}, please consider donating some of the money you have saved to help the homeless - https://www.dubsimon.ie/Fundraise/Donate.aspx :)")
 
     return "ok", 200
 
