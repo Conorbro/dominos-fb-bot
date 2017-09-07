@@ -3,7 +3,7 @@ import sys
 import json
 
 import requests
-from flask import Flask, request
+from flask import Flask, request, url_for, redirect
 
 app = Flask(__name__,
             static_url_path='',
@@ -21,8 +21,7 @@ def verify():
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
 
-    return app.send_static_file('web/static/index.html')
-
+    return app.send_static_file('index.html')
 
 @app.route('/', methods=['POST'])
 def webhook():
@@ -50,7 +49,7 @@ def webhook():
                     elif "the best?" in message_text:
                         send_message(sender_id, "Aisling's the best <3")
                     else:
-			    send_message(sender_id, "Hi there, the current Dominos Pizza Discount code is: {LATEST_CODE}, please consider donating some of the money you have saved to help the homeless - https://www.dubsimon.ie/Fundraise/Donate.aspx :)")
+			    send_message(sender_id, "Hi there, the current Dominos Pizza Discount code is: " + LATEST_CODE + ", please consider donating some of the money you have saved to help the homeless - https://www.dubsimon.ie/Fundraise/Donate.aspx :)")
 
     return "ok", 200
 
