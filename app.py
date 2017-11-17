@@ -49,7 +49,7 @@ def webhook():
                     elif "the best?" in message_text:
                         send_message(sender_id, "Aisling's the best <3")
                     else:
-			    send_message(sender_id, "Hi there, the current Dominos Pizza Discount code is: " + LATEST_CODE + ", please consider donating some of the money you have saved to help the homeless - https://www.dubsimon.ie/Fundraise/Donate.aspx :)")
+			    send_message(sender_id, "Hi there, the current Dominos Pizza Discount code is: " + LATEST_CODE + ", please consider donating some of the money you have saved to help the homeless - https://www.dubsimon.ie/donate/ :)")
 
     return "ok", 200
 
