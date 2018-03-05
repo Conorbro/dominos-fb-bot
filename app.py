@@ -10,7 +10,7 @@ app = Flask(__name__,
             static_folder='web/static',
             template_folder='web/templates')
 
-LATEST_CODE = "RUGBY2018"
+LATEST_CODE = "RUGBY018"
 
 @app.route('/', methods=['GET'])
 def verify():
